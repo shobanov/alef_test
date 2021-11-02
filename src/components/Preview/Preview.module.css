@@ -1,0 +1,36 @@
+.wrapper {
+  width: 197px;
+  margin-top: 30px;
+  margin-left: 375px;
+}
+
+.personalData__container p {
+  margin-bottom: 20px;
+}
+
+.personalData__container span {
+  font-weight: 700;
+}
+
+.childData__container {
+  margin-top: 60px;
+}
+
+.childData__container p {
+  margin-bottom: 20px;
+}
+
+.childData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.childData span {
+  font-weight: 700;
+  background: #F1F1F1;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+}
