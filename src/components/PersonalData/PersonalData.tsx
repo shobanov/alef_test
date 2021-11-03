@@ -10,7 +10,7 @@ export type DataType = {
   age: string;
 };
 
-export type initialValuesType = {
+export type InitialValuesType = {
   personName: string;
   personAge: string;
   childrenData: DataType[];
@@ -26,10 +26,9 @@ const PersonalData: React.FC = () => {
     childrenData: []
   };
 
-  function onSubmit(values: initialValuesType) {
-    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(values, null, 4));
+  function onSubmit(values: InitialValuesType) {
     dispatch(saveDataAC(values));
-  }
+  };
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>

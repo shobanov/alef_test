@@ -2,25 +2,18 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import PersonalData from './components/PersonalData/PersonalData';
 import styles from './App.module.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import Preview from './components/Preview/Preview';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
         <Header />
-        <Route exact path="/">
-          <Redirect to="/form" />
-        </Route>
-        <Switch>
-          <Route path="/form">
-            <PersonalData />
-          </Route>
-          <Route path="/preview">
-            <Preview />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<PersonalData />}/>
+          <Route path="/preview" element={<Preview />}/>
+        </Routes>
       </div>
       <Footer />
     </div>

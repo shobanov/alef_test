@@ -1,10 +1,10 @@
 import { Field, FieldArray, Form } from 'formik';
-import { DataType, initialValuesType } from '../PersonalData/PersonalData';
+import { DataType, InitialValuesType } from '../PersonalData/PersonalData';
 import styles from './ChildList.module.css';
 
 interface IChildList {
-  initialValues: initialValuesType;
-  values: initialValuesType;
+  initialValues: InitialValuesType;
+  values: InitialValuesType;
 };
 
 const ChildList: React.FC<IChildList> = (props: IChildList) => {
@@ -12,7 +12,7 @@ const ChildList: React.FC<IChildList> = (props: IChildList) => {
   const removeChildHandler = (e: React.MouseEvent<HTMLButtonElement>, id: number, remove: (id: number) => void) => {
     e.preventDefault();
     remove(id);
-  }
+  };
 
   return (
     <Form className={styles.childList}>
