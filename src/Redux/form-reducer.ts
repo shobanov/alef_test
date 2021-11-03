@@ -1,54 +1,19 @@
-const initialState: InitialStateType = {
-  personalData: {
-    name: '',
-    age: 0
-  },
-  childrenData: []
-}
+import { initialValuesType } from "../components/PersonalData/PersonalData";
 
-export const formReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+const initialState = {};
+
+export const formReducer = (state = initialState, action: ActionsType) => {
   switch (action.type) {
-    case 'SAVE-PERSONAL-DATA': 
-      return state;
-    case 'ADD-CHILD':
-      const oldArray = state.childrenData
-      return {
-        ...state,
-        childrenData: [...oldArray, action.payload]
-      }
-    case 'REMOVE-CHILD':
-      return {
-        ...state,
-        childrenData: action.payload
-      }   
-    case 'SAVE-CHILDREN-DATA': 
-      return state; 
+    case 'SAVE-DATA':
+      console.log(action.payload.personName)
+      return state = action.payload;
     default:
       return state;
   }
 };
 
 // action
-export const savePersonalDataAC = (name: string, age: number) => ({ type: 'SAVE-PERSONAL-DATA', name, age} as const);
-export const addChildAC = (payload: ChildrenDataType) => ({ type: 'ADD-CHILD', payload } as const);
-export const removeChildAC = (payload: ChildrenDataType[]) => ({ type: 'REMOVE-CHILD', payload } as const);
-export const saveChildrenDataAC = (id: string, name: string, age: number) => ({ type: 'SAVE-CHILDREN-DATA', id, name, age } as const);
+export const saveDataAC = (payload: initialValuesType) => ({ type: 'SAVE-DATA', payload } as const);
 
 // types
-type ActionsType = ReturnType<typeof saveChildrenDataAC | typeof savePersonalDataAC | typeof addChildAC | typeof removeChildAC>;
-
-export type InitialStateType = {
-  personalData: PersonalDataType;
-  childrenData: Array<ChildrenDataType>;
-}
-
-type PersonalDataType = {
-  name: string;
-  age: number;
-};
-
-export type ChildrenDataType = {
-  name: string;
-  age: number;
-  id: string;
-};
+type ActionsType = ReturnType<typeof saveDataAC>;

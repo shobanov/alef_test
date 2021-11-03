@@ -1,42 +1,51 @@
-import { FieldProps, Form, Formik, useFormik } from 'formik';
-import { FormEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ChildrenDataType, InitialStateType, saveChildrenDataAC } from '../../Redux/form-reducer';
-import { AppRootStateType } from '../../Redux/store';
-import ChildListItem from '../ChildListItem/ChildListItem';
+import { Field, FieldArray, Form } from 'formik';
+import { DataType, initialValuesType } from '../PersonalData/PersonalData';
 import styles from './ChildList.module.css';
 
-const ChildList: React.FC = () => {
-  const dispatch = useDispatch();
-  const childData = useSelector<AppRootStateType, ChildrenDataType[]>(state => state.form.childrenData);
+interface IChildList {
+  initialValues: initialValuesType;
+  values: initialValuesType;
+};
 
-  const initialValues = [
-    {
-      name: '',
-      age: '',
-    },
-  ];
-  
-  function onSubmit(values: any) {
-    console.log(values)
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(values, null, 4));
+const ChildList: React.FC<IChildList> = (props: IChildList) => {
+
+  const removeChildHandler = (e: React.MouseEvent<HTMLButtonElement>, id: number, remove: (id: number) => void) => {
+    e.preventDefault();
+    remove(id);
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>  
-      <Form className={styles.childList}>
-        <span>Дети (макс.5)</span>
-        <div>
-          {
-            childData.map((item, index) => (
-              <ChildListItem key={item.id} {...item} index={index} />
-            ))
-          }
-        </div>
-        <button className={styles.button} type="submit">Сохранить</button>
-      </Form>
-    </Formik>
-  )
-}
+    <Form className={styles.childList}>
+      {props.values.childrenData.length > 0 && <span>Дети (макс.5)</span>}
+      <div>
+        <FieldArray name="childrenData">
+          {({ remove }) => (
+            <div>
+              {props.values.childrenData.length > 0 &&
+                props.values.childrenData.map((_child: DataType, index: number) => (
+                  <div className={styles.ChildlistItem}>
+                    <div className={styles.input_section} key={index}>
+                      <Field
+                        type='text'
+                        name={`childrenData.${index}.name`} />
+                      <label>Имя</label>
+                    </div>
+                    <div className={styles.input_section}>
+                      <Field
+                        type='text'
+                        name={`childrenData.${index}.age`} />
+                      <label>Возраст</label>
+                    </div>
+                    <button onClick={(e) => removeChildHandler(e, index, remove)}>Удалить</button>
+                  </div>
+                ))}
+            </div>
+          )}
+        </FieldArray>
+      </div>
+      <button className={styles.button} type="submit">Сохранить</button>
+    </Form>
+  );
+};
 
 export default ChildList;

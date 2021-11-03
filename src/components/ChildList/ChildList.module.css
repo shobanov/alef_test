@@ -1,10 +1,7 @@
 .childList {
   width: 616px;
   margin: 0 auto;
-}
-
-.childList div {
-  width: 100%;
+  margin-bottom: 20px;
 }
 
 .button {
@@ -20,4 +17,47 @@
 .childList span {
   font-weight: 500;
   font-size: 16px;
+}
+
+.ChildlistItem {
+  display: flex;
+  margin-top: 10px;
+}
+
+.ChildlistItem:first-child {
+  margin-top: 20px;
+}
+
+.input_section {
+  position: relative;
+}
+
+.input_section input {
+  width: 260px;
+  height: 56px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 5px;
+  padding: 20px 0 0 16px;
+  box-sizing: border-box;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  margin-right: 18px;
+}
+
+.input_section label {
+  color: rgba(17, 17, 17, 0.48);
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.ChildlistItem button {
+  height: 56px;
+  width: 60px;
+  color: #01A7FD;
+  background-color: transparent;
 }

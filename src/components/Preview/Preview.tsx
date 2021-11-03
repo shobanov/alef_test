@@ -1,11 +1,17 @@
+import { useSelector } from 'react-redux';
+import { initialValuesType } from '../PersonalData/PersonalData';
 import styles from './Preview.module.css';
 
+
 const Preview: React.FC = () => {
+
+  const data = useSelector((state: initialValuesType) => state)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.personalData__container}>
         <p>Персональные данные</p>
-        <span>Василий,30 лет</span>      
+        <span>{data.personAge}</span>
       </div>
       <div className={styles.childData__container}>
         <p>Дети</p>
