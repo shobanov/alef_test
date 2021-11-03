@@ -3,17 +3,25 @@ import Header from './components/Header/Header';
 import PersonalData from './components/PersonalData/PersonalData';
 import styles from './App.module.css';
 import Preview from './components/Preview/Preview';
-import { Route, Routes } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
         <Header />
-        <Routes>
-          <Route path="/" element={<PersonalData />}/>
-          <Route path="/preview" element={<Preview />}/>
-        </Routes>
+        <Route path="/">
+          <Redirect to="/form"/>
+        </Route>
+        <Switch>
+          <Route path="/form">
+            <PersonalData />
+          </Route>
+          <Route path="/preview">
+            <Preview />
+          </Route>
+        </Switch>
       </div>
       <Footer />
     </div>
