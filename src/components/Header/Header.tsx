@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <img src={logo} alt="logo" />
       </div>
       <nav className={styles.header__links_container}>
-        <Link to="/">Форма</Link>
+        <Link to="/alef_test">Форма</Link>
         <Link to="/preview">Превью</Link>
       </nav>
     </div>

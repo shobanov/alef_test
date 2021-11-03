@@ -11,7 +11,7 @@ function App() {
       <div className={styles.wrapper}>
         <Header />
         <Routes>
-          <Route path="/" element={<PersonalData />}/>
+          <Route path="/alef_test" element={<PersonalData />}/>
           <Route path="/preview" element={<Preview />}/>
         </Routes>
       </div>
