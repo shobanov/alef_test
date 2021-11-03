@@ -53,10 +53,10 @@ const PersonalData: React.FC = () => {
             </Form>
           </div>
           <div className={styles.addChild__button_container}>
-            <img src={plus} alt="plus" />
+            {values.childrenData.length < 5 && <img src={plus} alt="plus" />}
             <FieldArray name="childrenData">
               {({ push }) => (
-                <button onClick={() => push({ name: '', age: '' })}>Добавить ребёнка</button>
+               values.childrenData.length < 5 && <button onClick={() => push({ name: '', age: '' })}>Добавить ребёнка</button>
               )}
             </FieldArray>
           </div>
