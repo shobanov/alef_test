@@ -29,8 +29,8 @@ const Preview: React.FC = () => {
         { data.childrenData.length > 0 && <p>Дети</p> }
         {
           data.childrenData.length > 0 &&
-          data.childrenData.map((child) => (
-            <div className={styles.childData}>
+          data.childrenData.map((child, index) => (
+            <div className={styles.childData} key={index}>
               <span>
                 {
                   child.name + ', ' + child.age + ' ' + plural(child.age, declension)

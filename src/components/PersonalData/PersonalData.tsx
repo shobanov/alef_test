@@ -78,7 +78,10 @@ const PersonalData: React.FC = () => {
             { values.childrenData.length < 5 && <img src={plus} alt="plus" /> }
             <FieldArray name="childrenData">
               {({ push }) => (
-              values.childrenData.length < 5 && <button onClick={() => push({ name: '', age: '' })}>Добавить ребёнка</button>  
+                values.childrenData.length < 5 &&
+                <button onClick={() => push({ name: '', age: '' })}>
+                  Добавить ребёнка
+                </button>  
               )}
             </FieldArray>
           </div>

@@ -27,7 +27,7 @@ const ChildList: React.FC = () => {
 
                   return (
                   <div key={index} className={styles.ChildlistItem}>
-                    <div className={styles.input_section} key={index}>
+                    <div className={styles.input_section}>
                       <Field
                         type='text'
                         name={`childrenData.${index}.name`}
