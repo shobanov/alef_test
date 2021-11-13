@@ -1,12 +1,11 @@
 import { Field, FieldArray, Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { initialState, initialStateType, saveDataAC } from '../../Redux/form-reducer';
 import ChildList from '../ChildList/ChildList';
 import plus from '../../img/plus.svg';
 import styles from './PersonalData.module.css';
-import { AppRootStateType } from '../../Redux/store';
 
 const DataValidationSchema = Yup.object().shape({
   personName: Yup.string()
@@ -63,8 +62,8 @@ const PersonalData: React.FC = () => {
               <div className={styles.pesonalData__input_section}>
                 <Field
                   type='number'
-                  onKeyDown={ (evt: React.KeyboardEvent) => evt.key === 'e' && evt.preventDefault() }
                   name='personAge'
+                  onKeyDown={ (evt: React.KeyboardEvent) => evt.key === 'e' && evt.preventDefault() }
                 />
                 {
                   errors.personAge && touched.personAge ? (

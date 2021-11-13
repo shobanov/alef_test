@@ -5,8 +5,7 @@ import { AppRootStateType } from '../../Redux/store';
 import styles from './Preview.module.css';
 
 const Preview: React.FC = () => {
-
-  const data = useSelector<AppRootStateType, initialStateType>(state => state.form)
+  const data = useSelector<AppRootStateType, initialStateType>(state => state.form);
 
   function plural(number: any, titles: string[]) {
     const cases = [2, 0, 1, 1, 1, 2];
