@@ -1,9 +1,10 @@
 import { Field, FieldArray, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
-import { initialState, initialStateType, saveDataAC } from '../../Redux/form-reducer';
+import { initialStateType, saveDataAC } from '../../Redux/form-reducer';
 import ChildList from '../ChildList/ChildList';
+import { AppRootStateType } from '../../Redux/store';
 import plus from '../../img/plus.svg';
 import styles from './PersonalData.module.css';
 
@@ -35,13 +36,14 @@ const DataValidationSchema = Yup.object().shape({
 
 const PersonalData: React.FC = () => {
   const dispatch = useDispatch();
+  const state = useSelector<AppRootStateType, initialStateType>(state => state.form);
   
   function onSubmit(values: initialStateType) {
     dispatch(saveDataAC(values));
   };
 
   return (
-    <Formik initialValues={initialState} onSubmit={onSubmit} validationSchema={DataValidationSchema}>
+    <Formik initialValues={state} enableReinitialize onSubmit={onSubmit} validationSchema={DataValidationSchema}>
       {({ values, errors, touched  }) => (
         <div className={styles.pesonalData_container}>
           <div className={styles.pesonalData}>
