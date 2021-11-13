@@ -1,6 +1,4 @@
-import { InitialValuesType } from "../components/PersonalData/PersonalData";
-
-const initialState = {
+export const initialState = {
   personName: '',
   personAge: '',
   childrenData: []
@@ -22,7 +20,18 @@ export const formReducer = (state = initialState, action: ActionsType) => {
 };
 
 // action
-export const saveDataAC = (payload: InitialValuesType) => ({ type: 'SAVE-DATA', payload } as const);
+export const saveDataAC = (payload: initialStateType) => ({ type: 'SAVE-DATA', payload } as const);
 
 // types
 type ActionsType = ReturnType<typeof saveDataAC>;
+
+export type DataType = {
+  name: string;
+  age: string;
+};
+
+export type initialStateType = {
+  personName: string;
+  personAge: string;
+  childrenData: DataType[];
+};
