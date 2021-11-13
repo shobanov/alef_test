@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-import { InitialValuesType } from '../PersonalData/PersonalData';
+
+import { initialStateType } from '../../Redux/form-reducer';
 import { AppRootStateType } from '../../Redux/store';
 import styles from './Preview.module.css';
 
 const Preview: React.FC = () => {
 
-  const data = useSelector<AppRootStateType, InitialValuesType>(state => state.form)
+  const data = useSelector<AppRootStateType, initialStateType>(state => state.form)
 
   function plural(number: any, titles: string[]) {
     const cases = [2, 0, 1, 1, 1, 2];
@@ -18,16 +19,27 @@ const Preview: React.FC = () => {
     <div className={styles.wrapper}>
       <div className={styles.personalData__container}>
         <p>Персональные данные</p>
-        <span>{data.personAge && data.personName + ', ' + data.personAge + plural(data.personAge, declension)}</span>
+        <span>
+          {
+            data.personAge &&
+            data.personName + ', ' + data.personAge + ' ' + plural(data.personAge, declension)
+          }
+        </span>
       </div>
       <div className={styles.childData__container}>
-        {data.childrenData.length > 0 && <p>Дети</p>}
-        {data.childrenData.length > 0 &&
+        { data.childrenData.length > 0 && <p>Дети</p> }
+        {
+          data.childrenData.length > 0 &&
           data.childrenData.map((child) => (
             <div className={styles.childData}>
-              <span>{child.name + ', ' + child.age + plural(child.age, declension)}</span>
+              <span>
+                {
+                  child.name + ', ' + child.age + ' ' + plural(child.age, declension)
+                }
+              </span>
             </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   );

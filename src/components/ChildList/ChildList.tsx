@@ -1,44 +1,60 @@
-import { Field, FieldArray, Form } from 'formik';
-import { DataType, InitialValuesType } from '../PersonalData/PersonalData';
+import { Field, FieldArray, Form, FormikErrors, useFormikContext } from 'formik';
+
+import { DataType, initialStateType } from '../../Redux/form-reducer';
 import styles from './ChildList.module.css';
 
-interface IChildList {
-  initialValues: InitialValuesType;
-  values: InitialValuesType;
-};
+const ChildList: React.FC = () => {
+  const { errors, values, touched } = useFormikContext<initialStateType>();
 
-const ChildList: React.FC<IChildList> = (props: IChildList) => {
-
-  const removeChildHandler = (e: React.MouseEvent<HTMLButtonElement>, id: number, remove: (id: number) => void) => {
-    e.preventDefault();
-    remove(id);
+  const removeChildHandler = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number,
+    remove: (id: number) => void) => {
+      e.preventDefault();
+      remove(id);
   };
 
   return (
     <Form className={styles.childList}>
-      {props.values.childrenData.length > 0 && <span>Дети (макс.5)</span>}
+      { values.childrenData.length > 0 && <span>Дети (макс.5)</span> }
       <div>
-        <FieldArray name="childrenData">
+        <FieldArray name="childrenData" validateOnChange>
           {({ remove }) => (
             <div>
-              {props.values.childrenData.length > 0 &&
-                props.values.childrenData.map((_child: DataType, index: number) => (
-                  <div className={styles.ChildlistItem}>
+              {values.childrenData.length > 0 &&
+                values.childrenData.map((_child: DataType, index: number) => {
+                  const childrenErrors = errors.childrenData as FormikErrors<DataType[]>;
+
+                  return (
+                  <div key={index} className={styles.ChildlistItem}>
                     <div className={styles.input_section} key={index}>
                       <Field
                         type='text'
-                        name={`childrenData.${index}.name`} />
+                        name={`childrenData.${index}.name`}
+                      />
+                      { 
+                        childrenErrors && touched.childrenData && touched.childrenData[index]?.name ? (
+                          <p>{childrenErrors[index]?.name}</p>
+                        ) : null 
+                      }
                       <label>Имя</label>
                     </div>
                     <div className={styles.input_section}>
                       <Field
-                        type='text'
-                        name={`childrenData.${index}.age`} />
+                        type='number'
+                        onKeyDown={ (evt: React.KeyboardEvent) => evt.key === 'e' && evt.preventDefault() }
+                        name={`childrenData.${index}.age`}
+                      />
+                      { 
+                        childrenErrors && touched.childrenData && touched.childrenData[index]?.age ? (
+                          <p>{childrenErrors[index]?.age}</p>
+                        ) : null
+                      }
                       <label>Возраст</label>
                     </div>
-                    <button onClick={(e) => removeChildHandler(e, index, remove)}>Удалить</button>
+                    <button onClick={ (e) => removeChildHandler(e, index, remove) }>Удалить</button>
                   </div>
-                ))}
+                )})}
             </div>
           )}
         </FieldArray>
