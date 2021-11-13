@@ -48,6 +48,18 @@
   position: relative;
 }
 
+.pesonalData__input_section:last-child {
+  margin-top: 20px;
+}
+
+.pesonalData__input_section p {
+  color: red;
+  position: absolute;
+  font-size: 13px;
+  left: 5px;
+  top: 52px;
+}
+
 .addChild__button_container {
   position: relative;
   width: 204px;
