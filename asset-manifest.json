@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/alef_test/static/css/main.7f93c147.chunk.css",
-    "main.js": "/alef_test/static/js/main.068ea882.chunk.js",
-    "main.js.map": "/alef_test/static/js/main.068ea882.chunk.js.map",
+    "main.js": "/alef_test/static/js/main.68640d00.chunk.js",
+    "main.js.map": "/alef_test/static/js/main.68640d00.chunk.js.map",
     "runtime-main.js": "/alef_test/static/js/runtime-main.c95d99c9.js",
     "runtime-main.js.map": "/alef_test/static/js/runtime-main.c95d99c9.js.map",
-    "static/js/2.3fb10360.chunk.js": "/alef_test/static/js/2.3fb10360.chunk.js",
-    "static/js/2.3fb10360.chunk.js.map": "/alef_test/static/js/2.3fb10360.chunk.js.map",
+    "static/js/2.6ee22642.chunk.js": "/alef_test/static/js/2.6ee22642.chunk.js",
+    "static/js/2.6ee22642.chunk.js.map": "/alef_test/static/js/2.6ee22642.chunk.js.map",
     "static/js/3.28c0d3b1.chunk.js": "/alef_test/static/js/3.28c0d3b1.chunk.js",
     "static/js/3.28c0d3b1.chunk.js.map": "/alef_test/static/js/3.28c0d3b1.chunk.js.map",
     "index.html": "/alef_test/index.html",
     "static/css/main.7f93c147.chunk.css.map": "/alef_test/static/css/main.7f93c147.chunk.css.map",
-    "static/js/2.3fb10360.chunk.js.LICENSE.txt": "/alef_test/static/js/2.3fb10360.chunk.js.LICENSE.txt",
+    "static/js/2.6ee22642.chunk.js.LICENSE.txt": "/alef_test/static/js/2.6ee22642.chunk.js.LICENSE.txt",
     "static/media/plus.b56791cc.svg": "/alef_test/static/media/plus.b56791cc.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c95d99c9.js",
-    "static/js/2.3fb10360.chunk.js",
+    "static/js/2.6ee22642.chunk.js",
     "static/css/main.7f93c147.chunk.css",
-    "static/js/main.068ea882.chunk.js"
+    "static/js/main.68640d00.chunk.js"
   ]
 }
