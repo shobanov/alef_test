@@ -1,5 +1,5 @@
 # alef-test
-[Demo](https://shobanov.github.io/alef_test/)
+[Demo](https://shobanov.github.io/alef_test/) :point_left:
 
 ## Тестовое задание
 
